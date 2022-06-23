@@ -2,7 +2,7 @@ const express = require("express");
 const UserModel = require("../Models/user.model");
 const router = express.Router();
 
-router.post("/sign-up", async (req, res) => {
+router.post("/signup", async (req, res) => {
   const { name, email, password } = await req.body;
   const newUser = await new UserModel({
     name,
@@ -19,22 +19,24 @@ router.post("/login", async (req, res) => {
   const LoggedIn = await UserModel.findOne({ email, password });
 
   LoggedIn
-    ? res.json({ message: Welcome, data: LoggedIn })
+    ? res.json({ message: "Welcome", data: LoggedIn })
     : res.json({ message: "Not found" });
 });
 
-router.put("/update-user/:id", async (req, res) => {
-  const { _id } = req.params.id;
-  const { name, email, password } = await req.body;
-  const UserUpdate = await UserModel.findOneAndUpdate(
-    { _id },
+router.post("/updateuser", async (req, res) => {
+  const { id, name, email, password } = await req.body;
+  const UserUpdate = await UserModel.findByIdAndUpdate(
+    { id },
     { name, email, password }
   );
-  UserUpdate.save();
+  UserUpdate
+    ? res.json({ message: "Welcome", data: UserUpdate })
+    : res.json({ message: "Not found" });
 });
 router.delete("/delete-user/:id", async (req, res) => {
-  const { _id } = req.params.id;
-  const DeletedUser = await UserModel.findByIdAndDelete({ _id });
+  const _id = await req.params.id;
+  const Deleted = await UserModel.findByIdAndDelete({ _id });
+  res.json({ Deleted });
 });
 
 module.exports = router;
