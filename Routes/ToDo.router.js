@@ -24,6 +24,16 @@ router.delete("/delete/:id", async (req, res) => {
   res.json({ Deleted });
 });
 
-router.post("/", async (req, res) => {});
+router.put("/update/:id", async (req, res) => {
+  const _id = req.params;
+  const { dueDate, priority, content } = req.body;
+
+  const todo = await ToDoModel.findByIdAndUpdate(
+    { _id },
+    { dueDate, priority, content }
+  );
+  (await todo).save();
+  res.json({ message: Successful, data: todo });
+});
 
 module.exports = router;
