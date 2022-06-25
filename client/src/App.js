@@ -1,13 +1,13 @@
-import "./App.css";
 import Nav from "./Nav/Nav";
-import ToDo from "./ToDo/ToDo";
+import ToDoSection from "./ToDoSection/ToDoSection";
+import styles from "./ToDo/ToDo.module.css";
 
 function App() {
   return (
-    <div className="App">
-      {/* <ToDo /> */}
+    <section className={styles.mainly}>
       <Nav />
-    </div>
+      <ToDoSection />
+    </section>
   );
 }
 
