@@ -31,3 +31,11 @@
     right: 0;
     margin-top: -1.2rem;
 }
+
+.mainly {
+    background-image: url("../annie-spratt-pKpipZVVEC0-unsplash.jpg");
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
