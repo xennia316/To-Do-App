@@ -1,0 +1,10 @@
+.body {
+    padding-left: 30vw;
+    width: 40vw;
+}
+
+.intro {
+    color: rgb(65, 139, 236);
+    font-size: 32px;
+    font-weight: 700;
+}
