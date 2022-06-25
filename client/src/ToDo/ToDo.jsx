@@ -15,7 +15,14 @@ const ToDo = () => {
         </section>
         <section className={styles.options}>
           <section className={styles.option}> Due date</section>
-          <section className={styles.option}> Priority</section>
+          <section className={styles.option}>
+            {" "}
+            <select>
+              <option>Very important</option>
+              <option>Not important</option>
+              <option>Important</option>
+            </select>
+          </section>
           <section className={styles.option}> Completed</section>
         </section>
       </section>
