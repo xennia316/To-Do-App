@@ -1,14 +1,7 @@
-import Nav from "./Nav/Nav";
-import ToDoSection from "./ToDoSection/ToDoSection";
-import styles from "./ToDo/ToDo.module.css";
+import React from "react";
 
-function App() {
-  return (
-    <section className={styles.mainly}>
-      <Nav />
-      <ToDoSection />
-    </section>
-  );
-}
+const App = () => {
+  return <div>App</div>;
+};
 
 export default App;
