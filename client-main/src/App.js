@@ -1,10 +1,10 @@
 import React from "react";
-import ToDo from "./ToDo/ToDo";
+import Display from "./Display/Display";
 
 const App = () => {
   return (
     <section>
-      <ToDo />
+      <Display />
     </section>
   );
 };
