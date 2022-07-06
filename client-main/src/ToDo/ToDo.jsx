@@ -12,17 +12,17 @@ const ToDo = (param) => {
     <section className={styles.body}>
       <section className={styles.twoSide}>
         <section className={styles.check}>
-          <FontAwesomeIcon icon={faCheckCircle} />
+          <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
         </section>
         <section className={styles.content}>{param.text}</section>
       </section>
       <section className={styles.twoSide}>
         <section className={styles.edit}>
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon icon={faPen} className={styles.icon} />
         </section>
         <section className={styles.trash}>
           {" "}
-          <FontAwesomeIcon icon={faTrash} />{" "}
+          <FontAwesomeIcon icon={faTrash} className={styles.icon} />{" "}
         </section>
       </section>
     </section>
