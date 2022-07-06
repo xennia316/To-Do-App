@@ -1,0 +1,18 @@
+.body {
+    display: flex;
+    width: 50%;
+    margin: 2rem auto;
+    height: 7.5vh;
+    justify-content: space-between;
+    color: #fff;
+    background: linear-gradient(90deg, #ffb1b9, #f6cfd0, #febaae, #ffbcaa, #fff3f1);
+    text-align: center;
+    padding: .5rem;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.twoSide {
+    display: flex;
+    gap: 3rem;
+}
