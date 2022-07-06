@@ -1,0 +1,44 @@
+.body {
+    margin: 1rem auto;
+    width: 50vw;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.top {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.smaller {
+    font-size: 24px;
+}
+
+.topNext {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnTop {
+    outline: none;
+    border: none;
+    color: #ffb1b9;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: transparent;
+}
+
+.btnTop:hover {
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.date {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
