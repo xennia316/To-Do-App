@@ -5,7 +5,10 @@
     border: none;
     border-radius: 10px;
     padding: 1rem;
+    z-index: 1;
 }
+
+
 
 .top {
     width: 80%;
