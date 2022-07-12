@@ -4,12 +4,12 @@
     margin: 2rem auto;
     height: 7.5vh;
     justify-content: space-between;
-    color: #e9e9e9;
+    color: #555;
     background: linear-gradient(90deg, #ffb1b9, #f6cfd0, #febaae, #ffbcaa, #eeccc6, #febaae);
     text-align: center;
     padding: .5rem;
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .twoSide {
@@ -19,6 +19,11 @@
 
 .icon:hover,
 .content:hover {
+    color: rgb(133, 253, 133);
     cursor: pointer;
     font-size: larger;
+}
+
+.icon::selection {
+    color: green;
 }
