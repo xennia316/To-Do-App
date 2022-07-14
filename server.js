@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/user", UserRouter);
-app.use("/api/to-do", ToDoRouter);
+app.use("/api/todo", ToDoRouter);
 
 const PORT = process.env.PORT || 8080;
 
