@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToDo from "../ToDo/ToDo";
 import styles from "./display.module.css";
 import ToDo2 from "../ToDo/ToDo2";
 import Modal from "../Modal/Modal";
+import axios from "axios";
 
 const Display = () => {
   const [show, setShow] = useState(false);
@@ -13,39 +14,24 @@ const Display = () => {
     setShow(() => true);
   };
 
-  const listOfList = [
-    { text: "Call granny" },
-    { text: "Rubbbish all around me " },
-    { text: "Tsuiiiiiiiiiiiiiiiiiiiiiiiiiiiiiip" },
-    { text: "Wow Sonia #laughing" },
-    { text: "Yam head like you" },
-    { text: "I'll report to Nadege :)" },
-    { text: "Sharap ya mouth yam #all-laughing" },
-  ];
+  const [data, setData] = useState(null);
+  const url = "/api/todo/display";
 
-  const list2 = [
-    { text: "Call granny" },
-    { text: "Rubbbish all around me " },
-    { text: "Tsuiiiiiiiiiiiiiiiiiiiiiiiiiiiiiip" },
-  ];
+  useEffect(() => {
+    const allTodos = () => {
+      axios
+        .get(`${url}`)
+        .then((response) => {
+          const allTask = response.data.data;
+          setData(allTask);
+          console.log(allTask);
+        })
+        .catch((error) => console.error(`Error${error}`));
+    };
+    allTodos();
+    console.log(data);
+  }, []);
 
-  const individualList = listOfList.map((elem, index) => {
-    return (
-      <>
-        <span className={styles.date}>date</span>
-        <ToDo key={index} text={elem.text} />
-      </>
-    );
-  });
-
-  const finished = list2.map((elem, index) => {
-    return (
-      <>
-        <span className={styles.date}>date</span>
-        <ToDo2 key={index} text={elem.text} />
-      </>
-    );
-  });
   return (
     <section className={styles.body}>
       <Modal show={show} onClose={() => setShow(false)} />
@@ -59,8 +45,18 @@ const Display = () => {
         </button>{" "}
       </section>
       <section className={styles.todosection}>
-        {finished}
-        {individualList}
+        {data?.map((todo, index) => {
+          if (!todo.completed)
+            return (
+              <ToDo
+                completed={todo.completed}
+                text={todo.content}
+                key={index}
+              />
+            );
+
+          return <ToDo2 text={todo.content} key={index} />;
+        })}
       </section>
     </section>
   );
