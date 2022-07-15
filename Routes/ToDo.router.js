@@ -17,7 +17,10 @@ router.post("/add", async (req, res) => {
 
   res.json({ message: "Succesfully added a to do", data: NewToDo });
 });
-
+router.get("/display", async (req, res) => {
+  const all = await ToDoModel.find();
+  res.json({ all });
+});
 router.delete("/delete/:id", async (req, res) => {
   const _id = await req.params.id;
   const Deleted = await ToDoModel.findByIdAndDelete({ _id });
