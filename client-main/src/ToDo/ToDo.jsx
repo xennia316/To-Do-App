@@ -7,16 +7,23 @@ import {
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../Modal/Modal";
+import axios from "axios";
 
 const ToDo = (param) => {
-  const [editor, setEditor] = useState(null);
+  const [show, setShow] = useState(false);
 
   const handleClick = () => {
-    return <Modal />;
+    setShow(() => true);
+  };
+
+  const deleter = async (e) => {
+    e.preventDefault();
+    await axios.delete(`api/todo/delete/${param._id}`);
   };
 
   return (
     <section className={styles.body}>
+      <Modal show={show} onClose={() => setShow(false)} />
       <section className={styles.twoSide}>
         <section className={styles.check}>
           <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
@@ -27,7 +34,7 @@ const ToDo = (param) => {
         <section className={styles.edit} onClick={handleClick}>
           <FontAwesomeIcon icon={faPen} className={styles.icon} />
         </section>
-        <section className={styles.trash}>
+        <section className={styles.trash} onClick={deleter}>
           {" "}
           <FontAwesomeIcon icon={faTrash} className={styles.icon} />{" "}
         </section>

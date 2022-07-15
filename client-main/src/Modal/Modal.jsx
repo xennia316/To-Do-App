@@ -44,8 +44,9 @@ const Modal = (props) => {
     if (checkProperties(task)) {
       let result = await axios.post("/api/todo/add", task).then((data) => data);
       if (result.status === 200) {
-        localStorage.setItem("todo", JSON.stringify(result.data.data));
+        // localStorage.setItem("todo", JSON.stringify(result.data.data));
         clear();
+        props.onClose();
       } else {
         alert("Unsuccessful!");
       }
@@ -65,7 +66,7 @@ const Modal = (props) => {
         </section>
         <section className={styles.inputSection}>
           <form className={styles.form}>
-            <label>
+            <label className={styles.label}>
               {" "}
               Task
               <input
@@ -77,7 +78,7 @@ const Modal = (props) => {
                 onChange={handleTaskChange}
               />
             </label>{" "}
-            <label>
+            <label className={styles.label}>
               {" "}
               Due Date
               <input
@@ -89,7 +90,7 @@ const Modal = (props) => {
                 onChange={handleTaskChange}
               />
             </label>{" "}
-            <label>
+            <label className={styles.label}>
               priority
               <input
                 value={task.priority}

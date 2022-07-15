@@ -30,7 +30,7 @@ const Display = () => {
     };
     allTodos();
     console.log(data);
-  }, []);
+  }, [data]);
 
   return (
     <section className={styles.body}>
@@ -49,13 +49,14 @@ const Display = () => {
           if (!todo.completed)
             return (
               <ToDo
+                _id={todo._id}
                 completed={todo.completed}
                 text={todo.content}
                 key={index}
               />
             );
 
-          return <ToDo2 text={todo.content} key={index} />;
+          return <ToDo2 _id={todo._id} text={todo.content} key={index} />;
         })}
       </section>
     </section>

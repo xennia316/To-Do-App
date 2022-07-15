@@ -11,6 +11,10 @@
     color: #555;
 }
 
+.label {
+    text-align: left;
+}
+
 .main {
     position: fixed;
     top: 0;
