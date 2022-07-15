@@ -7,7 +7,7 @@
     color: #555;
     background: linear-gradient(90deg, #ffb1b9, #f6cfd0, #febaae, #ffbcaa, #eeccc6, #febaae);
     text-align: center;
-    padding: .5rem;
+    padding: .9rem;
     border-radius: 10px;
     font-size: 18px;
 }
@@ -19,9 +19,9 @@
 
 .icon:hover,
 .content:hover {
-    color: rgb(133, 253, 133);
+    color: #180101;
     cursor: pointer;
-    font-size: larger;
+    /* font-size: larger; */
 }
 
 .icon::selection {
