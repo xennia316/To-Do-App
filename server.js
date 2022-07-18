@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 8080;
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
-    console.log("Database successfully connected ...");
+    console.log("Database 🔞 successfully connected ...");
   })
   .catch(() => {
     console.log("Unable to connect to database ...");

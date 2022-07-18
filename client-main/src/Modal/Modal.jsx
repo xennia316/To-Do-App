@@ -3,18 +3,17 @@ import styles from "./Modal.module.css";
 import axios from "axios";
 
 const Modal = (props) => {
+  const [task, setTask] = useState({
+    content: "",
+    dueDate: "",
+    priority: 1,
+  });
   const today = new Date();
   const day = today.toDateString();
   // console.log(day);
   const clear = () => {
     setTask({ content: "", dueDate: day, priority: 1 });
   };
-
-  const [task, setTask] = useState({
-    content: "",
-    dueDate: "",
-    priority: 1,
-  });
 
   const handleTaskChange = (e) => {
     const { name, value } = e.target;

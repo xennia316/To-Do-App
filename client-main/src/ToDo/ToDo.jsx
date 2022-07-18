@@ -6,7 +6,7 @@ import {
   faTrash,
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../Modal/Modal";
+import Modal2 from "../Modal/Modal2";
 import axios from "axios";
 
 const ToDo = (param) => {
@@ -23,7 +23,12 @@ const ToDo = (param) => {
 
   return (
     <section className={styles.body}>
-      <Modal show={show} onClose={() => setShow(false)} />
+      <Modal2
+        _id={param._id}
+        details={param}
+        show={show}
+        onClose={() => setShow(false)}
+      />
       <section className={styles.twoSide}>
         <section className={styles.check}>
           <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
