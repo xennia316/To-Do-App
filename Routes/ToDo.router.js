@@ -17,6 +17,20 @@ router.post("/add", async (req, res) => {
 
   res.json({ message: "Succesfully added a to do", data: NewToDo });
 });
+
+router.post("/complete/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  const NewToDo = await ToDoModel.findByIdAndUpdate(
+    { _id },
+    { completed: true }
+  );
+
+  NewToDo.save();
+
+  res.json({ message: "Succesfully completed a to do", data: NewToDo });
+});
+
 router.get("/display", async (req, res) => {
   const all = await ToDoModel.find({});
   res.json({ data: all });
