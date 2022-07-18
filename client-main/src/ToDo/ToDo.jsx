@@ -21,6 +21,17 @@ const ToDo = (param) => {
     await axios.delete(`api/todo/delete/${param._id}`);
   };
 
+  let stat = param.completed;
+
+  const statclick = () => {
+    axios.post(`api/todo/complete/${param._id}`);
+    stat = !stat;
+    console.log(stat);
+  };
+  useEffect(() => {
+    statclick();
+  }, [param]);
+
   return (
     <section className={styles.body}>
       <Modal2
@@ -31,7 +42,11 @@ const ToDo = (param) => {
       />
       <section className={styles.twoSide}>
         <section className={styles.check}>
-          <FontAwesomeIcon icon={faCheckCircle} className={styles.icon} />
+          <FontAwesomeIcon
+            icon={faCheckCircle}
+            className={styles.icon}
+            onClick={statclick}
+          />
         </section>
         <section className={styles.content}>{param.text}</section>
       </section>
