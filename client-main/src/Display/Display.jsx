@@ -30,7 +30,7 @@ const Display = () => {
     };
     allTodos();
     console.log(data);
-  }, [data]);
+  }, []);
 
   return (
     <section className={styles.body}>
@@ -49,6 +49,8 @@ const Display = () => {
           if (!todo.completed)
             return (
               <ToDo
+                dueDate={todo.dueDate}
+                priority={todo.priority}
                 _id={todo._id}
                 completed={todo.completed}
                 text={todo.content}
@@ -56,7 +58,15 @@ const Display = () => {
               />
             );
 
-          return <ToDo2 _id={todo._id} text={todo.content} key={index} />;
+          return (
+            <ToDo2
+              dueDate={todo.dueDate}
+              priority={todo.priority}
+              _id={todo._id}
+              text={todo.content}
+              key={index}
+            />
+          );
         })}
       </section>
     </section>
