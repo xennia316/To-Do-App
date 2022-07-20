@@ -1,6 +1,7 @@
 .body {
     margin: 1rem auto;
     width: 50vw;
+    min-width: 632px;
     background-color: #f9f9f9;
     border: none;
     border-radius: 10px;
@@ -8,7 +9,11 @@
     z-index: 1;
 }
 
-
+.h3 {
+    font-size: 18px;
+    margin: 0 5rem;
+    text-align: right;
+}
 
 .top {
     width: 80%;
