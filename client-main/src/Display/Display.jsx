@@ -141,7 +141,6 @@ const Display = () => {
         ) : (
           <p> No tasks due later</p>
         )}
-        ;
       </section>
     </section>
   );
