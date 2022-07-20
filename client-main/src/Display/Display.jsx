@@ -9,65 +9,139 @@ import axios from "axios";
 
 const Display = () => {
   const [show, setShow] = useState(false);
+  const [data, setData] = useState(null);
+  const [todayData, setTodayData] = useState(null);
+  const [laterData, setLaterData] = useState(null);
+
+  const today = new Date();
+  const day = today.toDateString();
 
   const modalClick = () => {
     setShow(() => true);
   };
 
-  const [data, setData] = useState(null);
   const url = "/api/todo/display";
 
+  const allTodos = async () => {
+    await axios
+      .get(`${url}`)
+      .then((response) => {
+        const allTask = response.data.data;
+
+        setData(allTask);
+      })
+      .catch((error) => console.error(`Error${error}`));
+  };
+
   useEffect(() => {
-    const allTodos = () => {
-      axios
-        .get(`${url}`)
-        .then((response) => {
-          const allTask = response.data.data;
-          setData(allTask);
-          console.log(allTask);
-        })
-        .catch((error) => console.error(`Error${error}`));
-    };
     allTodos();
-    console.log(data);
   }, []);
+
+  useEffect(() => {
+    setTodayData(
+      data?.filter((todo) => {
+        return new Date(todo.dueDate).toDateString() === day;
+      })
+    );
+    setLaterData(
+      data?.filter((todo) => {
+        return new Date(todo.dueDate).toDateString() !== day;
+      })
+    );
+  }, [data]);
 
   return (
     <section className={styles.body}>
-      <Modal show={show} onClose={() => setShow(false)} />
+      <Modal
+        show={show}
+        onClose={() => {
+          setShow(false);
+          allTodos();
+        }}
+      />
       <section className={styles.top}>
         <h2>To Do List</h2>
       </section>
       <section className={styles.topNext}>
-        <h2 className={styles.smaller}>To Do List</h2>
+        <h2 className={styles.smaller}>Welcome</h2>
         <button className={styles.btnTop} onClick={modalClick}>
           Add a task <FontAwesomeIcon icon={faAdd} />
         </button>{" "}
       </section>
       <section className={styles.todosection}>
-        {data?.map((todo, index) => {
-          if (!todo.completed)
-            return (
-              <ToDo
-                dueDate={todo.dueDate}
-                priority={todo.priority}
-                _id={todo._id}
-                completed={todo.completed}
-                text={todo.content}
-                key={index}
-              />
-            );
+        {todayData ? (
+          <section>
+            <h2 className={styles.h3}>Due Today</h2>
+            {todayData
+              ?.sort((a, b) => b.priority - a.priority)
+              .map((todo, index) => {
+                if (!todo.completed) {
+                  {
+                    /* console.log(new Date(todo.dueDate).toDateString()); */
+                  }
 
-          return (
-            <ToDo2
-              dueDate={todo.dueDate}
-              priority={todo.priority}
-              _id={todo._id}
-              text={todo.content}
-              key={index}
-            />
-          );
-        })}
+                  return (
+                    <ToDo
+                      dueDate={todo.dueDate}
+                      priority={todo.priority}
+                      _id={todo._id}
+                      completed={todo.completed}
+                      text={todo.content}
+                      key={index}
+                    />
+                  );
+                }
+                return (
+                  <ToDo2
+                    dueDate={todo.dueDate}
+                    priority={todo.priority}
+                    _id={todo._id}
+                    text={todo.content}
+                    key={index}
+                  />
+                );
+              })}
+          </section>
+        ) : (
+          <p> No tasks due today</p>
+        )}
+        {laterData ? (
+          <section>
+            <h2 className={styles.h3}>Due Later</h2>
+            {laterData
+              ?.sort((a, b) => a.priority - b.priority)
+              .map((todo, index) => {
+                if (!todo.completed) {
+                  {
+                    /* console.log(new Date(todo.dueDate).toDateString()); */
+                  }
+
+                  return (
+                    <ToDo
+                      dueDate={todo.dueDate}
+                      priority={todo.priority}
+                      _id={todo._id}
+                      completed={todo.completed}
+                      text={todo.content}
+                      key={index}
+                    />
+                  );
+                }
+                return (
+                  <ToDo2
+                    dueDate={todo.dueDate}
+                    priority={todo.priority}
+                    _id={todo._id}
+                    text={todo.content}
+                    key={index}
+                  />
+                );
+              })}
+          </section>
+        ) : (
+          <p> No tasks due later</p>
+        )}
+        ;
       </section>
     </section>
   );
