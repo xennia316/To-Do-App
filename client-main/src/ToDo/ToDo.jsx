@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./toDo.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,16 +21,9 @@ const ToDo = (param) => {
     await axios.delete(`api/todo/delete/${param._id}`);
   };
 
-  let stat = param.completed;
-
-  const statclick = () => {
-    axios.post(`api/todo/complete/${param._id}`);
-    stat = !stat;
-    console.log(stat);
+  const handleComplete = () => {
+    axios.post(`api/todo/complete`, { _id: param._id });
   };
-  useEffect(() => {
-    statclick();
-  }, [param]);
 
   return (
     <section className={styles.body}>
@@ -45,7 +38,7 @@ const ToDo = (param) => {
           <FontAwesomeIcon
             icon={faCheckCircle}
             className={styles.icon}
-            onClick={statclick}
+            onClick={handleComplete}
           />
         </section>
         <section className={styles.content}>{param.text}</section>
