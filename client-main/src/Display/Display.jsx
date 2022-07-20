@@ -109,7 +109,7 @@ const Display = () => {
           <section>
             <h2 className={styles.h3}>Due Later</h2>
             {laterData
-              ?.sort((a, b) => a.priority - b.priority)
+              ?.sort((a, b) => b.priority - a.priority)
               .map((todo, index) => {
                 if (!todo.completed) {
                   {
