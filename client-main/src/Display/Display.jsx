@@ -35,7 +35,7 @@ const Display = () => {
 
   useEffect(() => {
     allTodos();
-  }, []);
+  }, [show, data]);
 
   useEffect(() => {
     setTodayData(
@@ -76,10 +76,6 @@ const Display = () => {
               ?.sort((a, b) => b.priority - a.priority)
               .map((todo, index) => {
                 if (!todo.completed) {
-                  {
-                    /* console.log(new Date(todo.dueDate).toDateString()); */
-                  }
-
                   return (
                     <ToDo
                       dueDate={todo.dueDate}
@@ -103,7 +99,7 @@ const Display = () => {
               })}
           </section>
         ) : (
-          <p> No tasks due today</p>
+          <p className={styles.jsp}> No tasks due today</p>
         )}
         {laterData ? (
           <section>
@@ -112,10 +108,6 @@ const Display = () => {
               ?.sort((a, b) => b.priority - a.priority)
               .map((todo, index) => {
                 if (!todo.completed) {
-                  {
-                    /* console.log(new Date(todo.dueDate).toDateString()); */
-                  }
-
                   return (
                     <ToDo
                       dueDate={todo.dueDate}
@@ -139,7 +131,7 @@ const Display = () => {
               })}
           </section>
         ) : (
-          <p> No tasks due later</p>
+          <p className={styles.jsp}> No tasks due later</p>
         )}
       </section>
     </section>
