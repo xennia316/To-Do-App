@@ -24,19 +24,17 @@ const Modal = (props) => {
   };
 
   const checkProperties = (task) => {
-    let real = task.dueDate;
-    let realTime = real.getTime();
-
-    let comp = today.getTime();
+    let date1 = new Date(task.dueDate).getTime();
+    let date2 = new Date(today).getTime();
     if (
       task.content === "" ||
       task.priority < 1 ||
       task.priority > 3 ||
-      realTime < comp
+      date1 < date2
     ) {
       alert("This information cannot be registered");
       setTask({ content: "", dueDate: "", priority: 1 });
-      console.log(task);
+
       return false;
     }
     return true;
