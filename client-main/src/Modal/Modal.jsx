@@ -99,8 +99,8 @@ const Modal = (props) => {
                 className={styles.input}
                 type="Number"
                 max="3"
-                min="1"
-                placeholder="Enter a priority"
+                min="0"
+                placeholder="Enter a priority for this task"
                 onChange={handleTaskChange}
               />
             </label>
