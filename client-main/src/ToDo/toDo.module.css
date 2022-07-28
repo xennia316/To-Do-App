@@ -19,7 +19,7 @@
 
 .icon:hover,
 .content:hover {
-    color: #180101;
+    color: #fefefefe;
     cursor: pointer;
     /* font-size: larger; */
 }
