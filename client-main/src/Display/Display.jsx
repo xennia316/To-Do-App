@@ -40,7 +40,10 @@ const Display = () => {
   useEffect(() => {
     setTodayData(
       data?.filter((todo) => {
-        return new Date(todo.dueDate).toDateString() === day;
+        const tempDate = new Date(todo.dueDate).toDateString();
+        if (tempDate === day) {
+          return tempDate;
+        }
       })
     );
     setLaterData(
@@ -60,7 +63,7 @@ const Display = () => {
         }}
       />
       <section className={styles.top}>
-        <h2>To Do List</h2>
+        <h2>Your To Do List</h2>
       </section>
       <section className={styles.topNext}>
         <h2 className={styles.smaller}>Welcome</h2>
