@@ -9,7 +9,7 @@ require("dotenv").config();
 const UserRouter = require("./Routes/User.router");
 const ToDoRouter = require("./Routes/ToDo.router");
 
-app.use(express.static(path.join(__dirname, "client-main", "build")));
+// app.use(express.static(path.join(__dirname, "client-main", "build")));
 
 app.use(express.urlencoded());
 app.use(express.json());
