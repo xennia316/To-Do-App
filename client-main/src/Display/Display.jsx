@@ -38,14 +38,27 @@ const Display = () => {
   }, [show, data]);
 
   useEffect(() => {
-    data?.filter((todo) => {
-      const tempDate = new Date(todo.dueDate).toDateString();
-      if (tempDate == day) {
-        setTodayData(todo);
-      } else {
-        setLaterData(todo);
-      }
-    });
+    setTodayData(
+      data?.filter((todo) => {
+        const tempDate = new Date(todo.dueDate).toDateString();
+        if (tempDate === day) {
+          return tempDate;
+        }
+      })
+    );
+    setLaterData(
+      data?.filter((todo) => {
+        return new Date(todo.dueDate).toDateString() !== day;
+      })
+    );
+    // data?.filter((todo) => {
+    //   const tempDate = new Date(todo.dueDate).toDateString();
+    //   if (tempDate == day) {
+    //     setTodayData(todo);
+    //   } else {
+    //     setLaterData(todo);
+    //   }
+    // });
   }, [data]);
 
   return (
