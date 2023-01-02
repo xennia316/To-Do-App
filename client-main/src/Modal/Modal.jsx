@@ -59,13 +59,13 @@ const Modal = (props) => {
   }
   return (
     <section className={styles.main} onClick={props.onClose}>
-      <section className={styles.body} onClick={(e) => e.stopPropagation()}>
-        <section title="closing mark" className={styles.closerContainer}>
+      <div className={styles.body} onClick={(e) => e.stopPropagation()}>
+        <div title="closing mark" className={styles.closerContainer}>
           <div className={styles.closer} onClick={props.onClose}>
             X
           </div>
-        </section>
-        <section className={styles.inputSection}>
+        </div>
+        <div className={styles.inputSection}>
           <form className={styles.form}>
             <label className={styles.label}>
               {" "}
@@ -92,7 +92,7 @@ const Modal = (props) => {
               />
             </label>{" "}
             <label className={styles.label}>
-              priority
+              Priority
               <input
                 value={task.priority}
                 name="priority"
@@ -108,8 +108,8 @@ const Modal = (props) => {
               Submit
             </button>
           </form>
-        </section>
-      </section>
+        </div>
+      </div>
     </section>
   );
 };
