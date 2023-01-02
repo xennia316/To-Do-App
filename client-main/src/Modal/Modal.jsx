@@ -62,7 +62,7 @@ const Modal = (props) => {
       <section className={styles.body} onClick={(e) => e.stopPropagation()}>
         <section title="closing mark" className={styles.closerContainer}>
           <div className={styles.closer} onClick={props.onClose}>
-            x
+            X
           </div>
         </section>
         <section className={styles.inputSection}>
